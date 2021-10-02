@@ -1,0 +1,68 @@
+version: '2.0'
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- bot_challenge:
+    use_entities: true
+- buy_phone_laptop:
+    use_entities: true
+- give_information:
+    use_entities: true
+- not_applicable:
+    use_entities: true
+entities:
+- category
+- ram
+- price
+- camera
+slots:
+  category:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  ram:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  price:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  camera:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+responses:
+  utter_how_can_I_help:
+  - text: Welcome. I'm your shopping bot. I can help you in finding a phone or a laptop
+  utter_ask_camera:
+  - text: What megapixel camera are you looking for? (Write na if not applicable)
+  utter_ask_price:
+  - text: What is your budget?
+  utter_ask_ram:
+  - text: How much GB RAM are you looking for?
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+actions:
+- action_search_results
+- utter_iamabot
+- utter_ask_ram
+- utter_goodbye
+- utter_how_can_I_help
+- utter_ask_camera
+- utter_ask_price
+forms: {}
+e2e_actions: []
